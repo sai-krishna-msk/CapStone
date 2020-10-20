@@ -1,1 +1,19 @@
-17BCD7094
+When more than one processes access a same code segment that segment is known as critical section. Critical section contains shared variables or resources which are needed to be synchronized to maintain consistency of data variable.
+
+Mutual Exclusion : If a process is executing in its critical section, then no other process is allowed to execute in the critical section.
+
+Progress : If no process is executing in the critical section and other processes are waiting outside the critical section, then only those processes that are not executing in their remainder section can participate in deciding which will enter in the critical section next, and the selection can not be postponed indefinitely.
+
+
+Bounded Waiting : A bound must exist on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted.
+
+Following are the methods used to solve peterson solution
+
+Peterson's solution is widely used solution to critical section problems.
+
+Some operating system offers a lock functionality where a Process acquires a lock when entering the Critical section and releases the lock after leaving it.
+
+
+Semaphores
+A Semaphore is an integer variable, which can be accessed only through two operations wait() and signal().
+There are two types of semaphores : Binary Semaphores and Counting Semaphores

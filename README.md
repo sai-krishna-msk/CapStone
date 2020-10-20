@@ -1,22 +1,32 @@
-## Problem statement
+# Phase-1
 
-Massive volume of papers to correct us really tedious to teachers so our system tries to assist teachers with paper correction in way which kept them in the loop
+- Creating basic dashboard
 
 
-Approach
 
-By fine tuning transformers to the spesefic topic's reference books we will provide highlighting for the content in students paper which is likely to classify content (soft classification)
+- Using a pre-trained Comprehension Model 
+  - With base language Model(pre-trained wiki)
+  - Task Specific pretrained on general dataset
 
-Transformer approach
 
-## Data format
 
-- Question paper and potential anwsers (of two types)
+- Using a pretrained Model for semantic Search
+  - using a distill BERT model
 
-Data collection
 
-- Based on which text books and what knowledge is teacher deciding correctness of the paper (let's call it reference) and sample awnser papers which are correct and wrong
 
-# Current Approach
+- Scoring each paper
 
-- Give a text corpus and ask a question on that, you will get from which index in that text corpus to which index answer is present 
+
+
+- Creating an ideal paper and finding out semantic similarity between that and this
+
+
+
+# Phase 2
+
+- Training a Doc2Vec model for operating systems (gensim)
+
+- Train a hugging face language model 
+
+- train the language model on specific dataset 
