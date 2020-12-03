@@ -1,0 +1,3 @@
+what is critical section ?
+how many process can be executed ? 
+what is mutual exclusion ?

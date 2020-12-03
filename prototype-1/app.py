@@ -11,6 +11,9 @@ from helper import write_session ,init_variables,update_score, estimate_similari
 if __name__=='__main__':
     curr_session, curr_answer, questions_list, curr_score,  reg,num_files = init_variables(SESSION_FILE, ANSWER_DOCS, QUESTIONS_FILE, SCORE_FOLDER)
 
+
+    
+
     st.title('Evaluation Assistant')
     reg_num = reg.split(".")[0]
     st.subheader(f"{reg_num}")

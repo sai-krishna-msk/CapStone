@@ -1,0 +1,38 @@
+A Critical Section is a code segment that accesses shared variables and has to be executed as an atomic action. It means that in a group of cooperating processes, at a given point of time, only one process must be executing its critical section. If any other process also wants to execute its critical section, it must wait until the first one finishes.
+
+
+
+
+Process Synchronization is the task of coordinating the execution of processes in a way that no two processes can have access to the same shared data and resources.
+
+
+To avoid any consistency in the result the three properties that should be considered mandatorily to implement critical section are as follow:
+
+1. Mutual Exclusion
+Only one process can execute its critical section at a time. The other process must wait until the previous process has completed its critical section execution completely
+
+2. Progress
+If a process doesn’t want to enter in its critical section. It should not be permitted to block another process from entering it, in its critical section.
+
+3. Bounded Waiting
+There is a bounded time up to which the process has to wait to enter its critical section after making the request. The system can’t keep waiting, a process for the indefinite time to enter its critical section. Anyhow the execution of the critical section takes a short duration. So, every process requesting to enter its critical section get the chance within the finite amount of time.
+
+
+
+Synchronization Hardware
+Many systems provide hardware support for critical section code. The critical section problem could be solved easily in a single-processor environment if we could disallow interrupts to occur while a shared variable or resource is being modified.
+
+In this manner, we could be sure that the current sequence of instructions would be allowed to execute in order without pre-emption. Unfortunately, this solution is not feasible in a multiprocessor environment.
+
+Disabling interrupt on a multiprocessor environment can be time consuming as the message is passed to all the processors.
+
+This message transmission lag, delays entry of threads into critical section and the system efficiency decreases.
+
+
+
+Mutex Locks
+As the synchronization hardware solution is not easy to implement for everyone, a strict software approach called Mutex Locks was introduced. In this approach, in the entry section of code, a LOCK is acquired over the critical resources modified and used inside critical section, and in the exit section that LOCK is released.
+
+As the resource is locked while a process executes its critical section hence no other process can access it.
+
+
