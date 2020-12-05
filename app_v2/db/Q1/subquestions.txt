@@ -1,3 +1,6 @@
-what is critical section ?
-how many process can be executed ? 
-what is mutual exclusion ?
+Which layer is physical layer?
+In which form ?
+What is Bit synchronization ?
+What is Bit rate ?
+What are topologies ?
+What is Transmission mode ?

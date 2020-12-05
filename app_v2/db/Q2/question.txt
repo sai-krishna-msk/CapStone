@@ -1,1 +1,1 @@
-This is Question Number 2
+what is critical section problem and how to solve it ?

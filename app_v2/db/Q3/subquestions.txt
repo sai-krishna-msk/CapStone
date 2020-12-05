@@ -1,3 +1,4 @@
-what is critical section ?
-how many process can be executed ? 
-what is mutual exclusion ?
+Why do we need software maintenance ?
+What is Corrective Maintenance ?
+What is Adaptive Maintenance ?
+What is Perfective maintenance ?

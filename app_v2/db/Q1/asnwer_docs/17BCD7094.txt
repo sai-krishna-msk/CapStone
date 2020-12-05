@@ -1,19 +1,10 @@
-When more than one processes access a same code segment that segment is known as critical section. Critical section contains shared variables or resources which are needed to be synchronized to maintain consistency of data variable.
+The lowest layer of the OSI reference model is the physical layer. It is responsible for the actual physical connection between the devices. The physical layer contains information in the form of bits. It is responsible for transmitting individual bits from one node to the next. When receiving data, this layer will get the signal received and convert it into 0s and 1s and send them to the Data Link layer, which will put the frame back together.
 
-Mutual Exclusion : If a process is executing in its critical section, then no other process is allowed to execute in the critical section.
+The functions of the physical layer are :
+Bit synchronization provides the synchronization of the bits by providing a clock. This clock controls both sender and receiver thus providing synchronization at bit level.
 
-Progress : If no process is executing in the critical section and other processes are waiting outside the critical section, then only those processes that are not executing in their remainder section can participate in deciding which will enter in the critical section next, and the selection can not be postponed indefinitely.
+Bit rate control defines the transmission rate i.e. the number of bits sent per second.
 
+Physical topologies: Physical layer specifies the way in which the different, devices/nodes are arranged in a network i.e. bus, star or mesh topolgy.
 
-Bounded Waiting : A bound must exist on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted.
-
-Following are the methods used to solve peterson solution
-
-Peterson's solution is widely used solution to critical section problems.
-
-Some operating system offers a lock functionality where a Process acquires a lock when entering the Critical section and releases the lock after leaving it.
-
-
-Semaphores
-A Semaphore is an integer variable, which can be accessed only through two operations wait() and signal().
-There are two types of semaphores : Binary Semaphores and Counting Semaphores
+Transmission mode defines the way in which the data flows between the two connected devices. The various transmission modes possible are: Simplex, half-duplex and full-duplex.

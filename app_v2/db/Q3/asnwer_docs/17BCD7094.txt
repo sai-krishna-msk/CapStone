@@ -1,19 +1,13 @@
-When more than one processes access a same code segment that segment is known as critical section. Critical section contains shared variables or resources which are needed to be synchronized to maintain consistency of data variable.
+Maintenance of a software system may be define which is used to concerned about the alteration or changes which are done in software system after the release. Maintenance of software is the part of software Engineering. Maintenance of software has a great value in the development of a system.
 
-Mutual Exclusion : If a process is executing in its critical section, then no other process is allowed to execute in the critical section.
-
-Progress : If no process is executing in the critical section and other processes are waiting outside the critical section, then only those processes that are not executing in their remainder section can participate in deciding which will enter in the critical section next, and the selection can not be postponed indefinitely.
+Needs of Maintenance is required after, When the user get the product at his own place, Installation and When software is in operational stage.
 
 
-Bounded Waiting : A bound must exist on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted.
+Different types of software maintenance
 
-Following are the methods used to solve peterson solution
+Corrective maintenance may be define with those alteration which is done for the solving those errors which was available in the software. With the help of corrective maintenance method software can change by removing all the faults. 
 
-Peterson's solution is widely used solution to critical section problems.
+Adaptive Maintenance - Adaptive maintenance may be defined by that alteration in software system to survive in that area where this system operates.
 
-Some operating system offers a lock functionality where a Process acquires a lock when entering the Critical section and releases the lock after leaving it.
+Perfective maintenance - To increase the efficiency, performance, maintainability, effectiveness of software that is called perfective maintenance .Most of the times enhancement also includes perfective maintenance as one of its part. After changes user operate this software for the purpose which it was developed by developer. 
 
-
-Semaphores
-A Semaphore is an integer variable, which can be accessed only through two operations wait() and signal().
-There are two types of semaphores : Binary Semaphores and Counting Semaphores

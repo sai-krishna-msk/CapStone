@@ -1,5 +1,10 @@
-The part of the process, where the code for accessing the shared resources is written, that part or section is the critical section (CS) of that process. Now the critical section problem is to implement such a solution, which can be used by the processes to cooperate when they share common resources.
+Software Maintenance is the process of modifying a software product after it has been delivered to the customer. The main purpose of software maintenance is to modify and update software application after delivery to correct faults and to improve performance.
 
-To execute its critical section, a process must take care of the three properties mutual exclusion, progress and bounded wait. Possessing these three properties a process can execute its critical section successfully. 
+Software Maintenance must be performed in order to, Correct faults, Improve the design., Implement enhancements and Interface with other systems.
 
+Maintenance can be divided into the following:
+Corrective maintenance of a software product may be essential either to rectify some bugs observed while the system is in use, or to enhance the performance of the system.
 
+Adaptive maintenance This includes modifications and updations when the customers need the product to run on new platforms, on new operating systems, or when they need the product to interface with new hardware and software.
+
+Perfective maintenance is needed to support the new features that the users want or to change different types of functionalities of the system according to the customer demands.

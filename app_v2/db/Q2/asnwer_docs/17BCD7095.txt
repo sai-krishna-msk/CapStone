@@ -1,5 +1,45 @@
-The part of the process, where the code for accessing the shared resources is written, that part or section is the critical section (CS) of that process. Now the critical section problem is to implement such a solution, which can be used by the processes to cooperate when they share common resources.
-
-To execute its critical section, a process must take care of the three properties mutual exclusion, progress and bounded wait. Possessing these three properties a process can execute its critical section successfully. 
+When more than one processes access a same code segment that segment is known as critical section. Critical section contains shared variables or resources which are needed to be synchronized to maintain consistency of data variable. It means that in a group of cooperating processes, at a given point of time, only one process must be executing its critical section
 
 
+If a process is executing in its critical section, then no other process is allowed to execute in the critical section then there is mutual exclusion.
+
+Progress : If no process is executing in the critical section and other processes are waiting outside the critical section, then only those processes that are not executing in their remainder section can participate in deciding which will enter in the critical section next, and  when the selection can not be postponed indefinitely then it is calle progress.
+
+
+Bounded Waiting is when there exisits a  bound  on the number of times that other processes are allowed to enter their critical sections after a process has made a request to enter its critical section and before that request is granted.
+
+
+Following are the methods used to solve 
+
+Peterson's solution is widely used solution to critical section problems.
+
+Some operating system offers a lock functionality where a Process acquires a lock when entering the Critical section and releases the lock after leaving it.
+
+
+A Semaphore is an integer variable, which can be accessed only through two operations wait() and signal().
+There are two types of semaphores : Binary Semaphores and Counting Semaphores
+
+
+
+Ans_ Version-2
+
+A Critical Section is a code segment that accesses shared variables and has to be executed as an atomic action. It means that in a group of cooperating processes, at a given point of time, only one process must be executing its critical section. If any other process also wants to execute its critical section, it must wait until the first one finishes.
+Process Synchronization is the task of coordinating the execution of processes in a way that no two processes can have access to the same shared data and resources.
+To avoid any consistency in the result the three properties that should be considered mandatorily to implement critical section are as follow:
+
+In Mutual Exclusion Only one process can execute its critical section at a time. The other process must wait until the previous process has completed its critical section execution completely
+
+Progress is when  process doesn’t want to enter in its critical section. It should not be permitted to block another process from entering it, in its critical section.
+
+Bounded Waiting here is when process has to wait to enter its critical section after making the request. The system can’t keep waiting, a process for the indefinite time to enter its critical section. Anyhow the execution of the critical section takes a short duration. So, every process requesting to enter its critical section get the chance within the finite amount of time.
+
+
+Synchronization Hardware
+Many systems provide hardware support for critical section code. The critical section problem could be solved easily in a single-processor environment if we could disallow interrupts to occur while a shared variable or resource is being modified.
+In this manner, we could be sure that the current sequence of instructions would be allowed to execute in order without pre-emption. Unfortunately, this solution is not feasible in a multiprocessor environment.
+Disabling interrupt on a multiprocessor environment can be time consuming as the message is passed to all the processors.
+This message transmission lag, delays entry of threads into critical section and the system efficiency decreases.
+
+Mutex Locks
+As the synchronization hardware solution is not easy to implement for everyone, a strict software approach called Mutex Locks was introduced. In this approach, in the entry section of code, a LOCK is acquired over the critical resources modified and used inside critical section, and in the exit section that LOCK is released.
+As the resource is locked while a process executes its critical section hence no other process can access it.

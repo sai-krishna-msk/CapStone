@@ -41,7 +41,7 @@ if __name__=='__main__':
     
     
     keys = list()
-    print(subquestions_list)
+    print(subquestions_list, curr_answer)
     for question in subquestions_list:
         resp = get_key(question , curr_answer)
         keys.append(curr_answer[ resp["start"]:resp["end"]+1 ])

@@ -1,5 +1,14 @@
-The part of the process, where the code for accessing the shared resources is written, that part or section is the critical section (CS) of that process. Now the critical section problem is to implement such a solution, which can be used by the processes to cooperate when they share common resources.
+Representation of Bits: Data in this layer consists of stream of bits. The bits must be encoded into signals for transmission. It defines the type of encoding i.e. how 0's and 1's are changed to signal.
 
-To execute its critical section, a process must take care of the three properties mutual exclusion, progress and bounded wait. Possessing these three properties a process can execute its critical section successfully. 
+Data Rate: This layer defines the rate of transmission which is the number of bits per second.
 
+Synchronization: It deals with the synchronization of the transmitter and receiver. The sender and receiver are synchronized at bit level.
 
+Interface: The physical layer defines the transmission interface between devices and transmission medium.
+
+Line Configuration: This layer connects devices with the medium: Point to Point configuration and Multipoint configuration.
+
+Topologies: Devices must be connected using the following topologies: Mesh, Star, Ring and Bus.
+
+Transmission Modes: Physical Layer defines the direction of transmission between two devices: Simplex, Half Duplex, Full Duplex.
+Deals with baseband and broadband transmission.

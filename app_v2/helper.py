@@ -13,7 +13,7 @@ import json
 from constants import QUESTIONS_Dir, ANSWER_Dir, QUESTIONS_File, SUB_Question_File, SCORE_Dir, IDEAL_Dir , SESSION_File
 
 
-@st.cache(allow_output_mutation=True)
+# @st.cache(allow_output_mutation=True)
 def load_assets():
     nlp, model= pipeline("question-answering"),  SentenceTransformer('distilbert-base-nli-mean-tokens')
     stop_words, tokenizer, lemmatizer =set(stopwords.words()), RegexpTokenizer(r'\w+'), WordNetLemmatizer()
@@ -139,7 +139,7 @@ def read_score(QUESTIONS_Dir,  curr_question,SCORE_DIR, reg):
         with open(QUESTIONS_Dir+ curr_question+"/"+ SCORE_DIR+reg) as f:
             return f.read()
     else:
-        open(curr_question+ SCORE_DIR+reg, 'a').close()
+        open(QUESTIONS_Dir+ curr_question+"/"+ SCORE_DIR+reg, 'a').close()
 
     return None
 

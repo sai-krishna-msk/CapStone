@@ -1,0 +1,4 @@
+what is primary key ?
+What is a superkey ?
+What is candidate key ?
+What is a foreign key ?
