@@ -9,19 +9,16 @@ from num2words import num2words
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import json
-
 from constants import QUESTIONS_Dir, ANSWER_Dir, QUESTIONS_File, SUB_Question_File, SCORE_Dir, IDEAL_Dir , SESSION_File
 
 
-# @st.cache(allow_output_mutation=True)
+
 def load_assets():
-    nlp, model= pipeline("question-answering"),  SentenceTransformer('distilbert-base-nli-mean-tokens')
-    stop_words, tokenizer, lemmatizer =set(stopwords.words()), RegexpTokenizer(r'\w+'), WordNetLemmatizer()
+    nlp= pipeline("question-answering")
 
-    return nlp, model, stop_words, tokenizer, lemmatizer
+    return nlp
 
-
-nlp, model, stop_words, tokenizer, lemmatizer = load_assets()
+nlp, model, stop_words, tokenizer, lemmatizer = load_assets(), SentenceTransformer('distilbert-base-nli-mean-tokens'), set(stopwords.words()), RegexpTokenizer(r'\w+'), WordNetLemmatizer()
 
 
 def get_session(session_file):
