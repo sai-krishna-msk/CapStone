@@ -112,10 +112,10 @@ def get_key(question, doc):
     result = nlp(question=question, context=doc)
     return result
 
-def add_ideal_answer(IDEAL_DIR, curr_answer):
-    ideal_files = os.listdir(IDEAL_DIR)
-    new_ideal_num = int(ideal_files[-1].split("_")[1].split(".txt")[0])+1
-    with open(IDEAL_DIR+f"ideal_{new_ideal_num}.txt", "w") as f:
+def add_ideal_answer(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer):
+    ideal_files = os.listdir(QUESTIONS_Dir+"/"+curr_question +"/"+IDEAL_Dir)
+    new_ideal_num = len(ideal_files)+1
+    with open(QUESTIONS_Dir+"/"+curr_question +"/"+IDEAL_Dir+f"ideal_{new_ideal_num}.txt", "w") as f:
         f.write(curr_answer.replace("**", ""))
 
 
@@ -182,7 +182,9 @@ def estimate_similarity(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_doc):
             text = f.read()
         
         score+=calculate_score(text, curr_doc)
-    
+
+    if(score==0):
+        return None
     return score/len(ideal_files)
 
 

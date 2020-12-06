@@ -54,7 +54,7 @@ if __name__=='__main__':
     add_to_ideal = st.sidebar.button("Add to Ideal Answer")
 
     if(add_to_ideal):
-        add_ideal_answer(IDEAL_DIR, curr_answer)
+        add_ideal_answer(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer)
 
     for question, key in zip(subquestions_list, keys):
         st.sidebar.text_input("",question)
@@ -66,15 +66,20 @@ if __name__=='__main__':
     st.markdown("___")
     col21, col22 = st.beta_columns(2)
 
-    semantic_sim_socre = round(estimate_similarity(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer)*100, 2)
-    col21.markdown(f"*Semantic Similarity Score **{semantic_sim_socre}%** *")
+    raw_semantic_score = estimate_similarity(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer)
+    if(raw_semantic_score):
+        semantic_sim_socre = round(raw_semantic_score*100, 2)
+        col21.markdown(f"*Semantic Similarity Score **{semantic_sim_socre}%** *")
+
+    else:
+        col21.markdown("No ideal answers added !")
 
 
     if(curr_score):
-        updated_score = col22.number_input('Insert a number', value = float(curr_score))
+        updated_score = col22.number_input('Enter score', value = float(curr_score))
 
     else:
-        updated_score = col22.number_input('Insert a number')
+        updated_score = col22.number_input('Enter score')
 
     if(updated_score and updated_score!=curr_score):
         update_score(QUESTIONS_Dir, curr_question, SCORE_Dir, curr_student , updated_score)
