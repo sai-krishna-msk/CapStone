@@ -1,0 +1,5 @@
+The part of the process, where the code for accessing the shared resources is written, that part or section is the critical section (CS) of that process. Now the critical section problem is to implement such a solution, which can be used by the processes to cooperate when they share common resources.
+
+To execute its critical section, a process must take care of the three properties mutual exclusion, progress and bounded wait. Possessing these three properties a process can execute its critical section successfully. 
+
+

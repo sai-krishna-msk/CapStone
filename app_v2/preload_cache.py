@@ -76,7 +76,6 @@ def prerun_inference():
                     pass
 
                 else:
-                    
                     updated_bool=True
                     updated_cache[question][answer_doc][subquestion] = nlp(question=subquestion, context=answer_doc)
 

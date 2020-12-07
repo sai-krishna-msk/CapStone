@@ -7,7 +7,7 @@ import os
 from constants import QUESTIONS_Dir, ANSWER_Dir, QUESTIONS_File, SUB_Question_File, SCORE_Dir, IDEAL_Dir , SESSION_File
 
 
-from helper import write_session ,init_variables,update_score, estimate_similarity, get_key, highlight_text, add_ideal_answer
+from helper import write_session ,init_variables,update_score, estimate_similarity, get_key, highlight_text, add_ideal_answer, add_highlights
 
 from preload_cache import prerun_inference
 
@@ -51,8 +51,8 @@ if __name__=='__main__':
         highlight_positions.append((resp['start'], resp['end']))
 
 
-
-    st.write(curr_answer)
+    markdown_writer = add_highlights(curr_answer, sorted(highlight_positions, key=lambda x: x[0]) )
+    st.markdown(markdown_writer)
 
     add_to_ideal = st.sidebar.button("Add to Ideal Answer")
 

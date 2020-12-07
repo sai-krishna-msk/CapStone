@@ -139,11 +139,23 @@ def add_ideal_answer(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer):
 
 
 # @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def highlight_text(raw_text, indices_list):
+def highlight_text(doc, start, end):
     
     return doc[:start]+"**"+doc[start:end+1]+"**"+doc[end+1:]
 
 
+def add_highlights(curr_answer, highlight_positions):
+    # cnt=0
+
+    # for start, end in highlight_positions:
+    #     if(cnt>0):
+    #         curr_answer = highlight_text(curr_answer, (start+4**cnt), (end+4**cnt))
+    #     else:
+    #         curr_answer = highlight_text(curr_answer, start, end)
+
+    #     cnt+=1
+ 
+    return curr_answer
 
 def buildAnswer(raw_text, keywords):
     pass
