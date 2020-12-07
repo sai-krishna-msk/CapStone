@@ -13,12 +13,7 @@ from constants import QUESTIONS_Dir, ANSWER_Dir, QUESTIONS_File, SUB_Question_Fi
 
 
 
-def load_assets():
-    nlp= pipeline("question-answering")
 
-    return nlp
-
-nlp, model, stop_words, tokenizer, lemmatizer = load_assets(), SentenceTransformer('distilbert-base-nli-mean-tokens'), set(stopwords.words()), RegexpTokenizer(r'\w+'), WordNetLemmatizer()
 
 
 def get_session(session_file):
@@ -81,26 +76,47 @@ def getKeywords(KEYWORDS_FILE):
 
 def write_results(resp, first_call=False):
     if(first_call):
-        if(os.path.isfile("cache.json") ):
+        if(os.path.isfile("updated_cache.json") ):
             return
 
-    with open("cache.json", "w") as f:
+    with open("updated_cache.json", "w") as f:
         json.dump(resp, f)
 
 def cache(func):
     write_results({}, True)
 
     def wrapper(*args):
-        with open("cache.json") as f:
+        with open("updated_cache.json") as f:
             cache= json.load(f)
 
-        if(str(args) in cache):
-            return cache[str(args)]
-            
+
+        if(args[0] in cache):
+            if(args[1] in cache[args[0]]):
+                if(args[2] in cache[args[0]][args[1]]):
+                    
+                    return cache[args[0]][args[1]][args[2]]
+
+                else:
+                   
+                    cache[args[0]][args[1]][args[2]]= func(*args)
+            else:
+               
+                cache[args[0]][args[1]] = dict() 
+                cache[args[0]][args[1]][args[2]]= func(*args)
         else:
-            cache[str(args)] = func(*args)
-            write_results(cache)
-            return cache[str(args)]
+            
+            cache[args[0]] = dict()
+            cache[args[0]][args[1]] = dict()
+            cache[args[0]][args[1]][args[2]]= func(*args)
+
+
+
+
+        
+        
+      
+        write_results(cache)
+        return cache[args[0]][args[1]][args[2]]
 
 
 
@@ -108,8 +124,9 @@ def cache(func):
 
 
 @cache
-def get_key(question, doc):
-    result = nlp(question=question, context=doc)
+def get_key(curr_question_text , curr_answer, subquestion):
+    nlp= pipeline("question-answering")
+    result = nlp(question=subquestion, context=curr_answer)
     return result
 
 def add_ideal_answer(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer):
@@ -122,7 +139,8 @@ def add_ideal_answer(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer):
 
 
 # @st.cache(allow_output_mutation=True, suppress_st_warning=True)
-def highlight_text(doc, start , end):
+def highlight_text(raw_text, indices_list):
+    
     return doc[:start]+"**"+doc[start:end+1]+"**"+doc[end+1:]
 
 
@@ -149,6 +167,9 @@ def update_score(QUESTIONS_Dir, curr_question, ANSWER_Dir, curr_student , update
 
 
 def prepreprocess_text(doc):
+    stop_words  =  set(stopwords.words())
+    tokenizer =  RegexpTokenizer(r'\w+')
+    lemmatizer = WordNetLemmatizer()
     filtered_sentence = []
     doc = doc.lower()
     word_tokens = tokenizer.tokenize(doc)
@@ -164,6 +185,7 @@ def prepreprocess_text(doc):
 
 
 def get_emb(sent):
+    model = SentenceTransformer('distilbert-base-nli-mean-tokens')
     sent = prepreprocess_text(sent)
     return model.encode(sent)
 
@@ -200,6 +222,9 @@ def init_variables():
     answer_files= get_answer_files(QUESTIONS_Dir ,questions[curr_question_num] ,ANSWER_Dir)
     
     curr_question = questions[curr_question_num]
+    if(curr_student_num> len(answer_files)-1):
+        curr_student_num=0
+
     curr_student = answer_files[curr_student_num]
 
     subquestions_list= get_subquestions(QUESTIONS_Dir, curr_question, SUB_Question_File)
@@ -211,8 +236,5 @@ def init_variables():
 
     return  (curr_question_num, curr_student_num,curr_question,curr_student, curr_question_text, questions, 
                 answer_files,  curr_answer, subquestions_list,curr_score)
-
-
-
 
 

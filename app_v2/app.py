@@ -9,6 +9,7 @@ from constants import QUESTIONS_Dir, ANSWER_Dir, QUESTIONS_File, SUB_Question_Fi
 
 from helper import write_session ,init_variables,update_score, estimate_similarity, get_key, highlight_text, add_ideal_answer
 
+from preload_cache import prerun_inference
 
 
 if __name__=='__main__':
@@ -17,7 +18,8 @@ if __name__=='__main__':
 
     (curr_question_num, curr_student_num,curr_question,curr_student, curr_question_text ,
      questions, answer_files,  curr_answer, subquestions_list,curr_score )= init_variables()
-
+    if st.button('Run inference'):
+        prerun_inference()
 
 
 
@@ -41,12 +43,13 @@ if __name__=='__main__':
     
     
     keys = list()
-   
-    for question in subquestions_list:
-        resp = get_key(question , curr_answer)
-        keys.append(curr_answer[ resp["start"]:resp["end"]+1 ])
-        curr_answer = highlight_text(curr_answer, resp['start'], resp['end'])
-      
+    highlight_positions = list()
+
+    for subquestion in subquestions_list:
+        resp = get_key(curr_question_text , curr_answer, subquestion)
+        keys.append(resp["answer"])
+        highlight_positions.append((resp['start'], resp['end']))
+
 
 
     st.write(curr_answer)
