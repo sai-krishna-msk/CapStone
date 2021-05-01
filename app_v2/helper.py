@@ -130,6 +130,7 @@ def get_key(curr_question_text , curr_answer, subquestion):
     return result
 
 def add_ideal_answer(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_answer):
+    if(not os.path.isdir(QUESTIONS_Dir +"/"+ curr_question+"/"+IDEAL_Dir)): os.mkdir(QUESTIONS_Dir+"/"+curr_question +"/"+IDEAL_Dir)
     ideal_files = os.listdir(QUESTIONS_Dir+"/"+curr_question +"/"+IDEAL_Dir)
     new_ideal_num = len(ideal_files)+1
     with open(QUESTIONS_Dir+"/"+curr_question +"/"+IDEAL_Dir+f"ideal_{new_ideal_num}.txt", "w") as f:
@@ -209,6 +210,7 @@ def calculate_score(ideal_doc, curr_doc):
 
 
 def estimate_similarity(QUESTIONS_Dir, curr_question, IDEAL_Dir, curr_doc):
+    if(not os.path.isdir(QUESTIONS_Dir +"/"+ curr_question+"/"+IDEAL_Dir)): return None
     ideal_files = os.listdir(QUESTIONS_Dir +"/"+ curr_question+"/"+IDEAL_Dir)
     score = 0
     for files in ideal_files:

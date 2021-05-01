@@ -1,0 +1,13 @@
+Maintenance of a software system may be define which is used to concerned about the alteration or changes which are done in software system after the release. Maintenance of software is the part of software Engineering. Maintenance of software has a great value in the development of a system.
+
+Needs of Maintenance is required after, When the user get the product at his own place, Installation and When software is in operational stage.
+
+
+Different types of software maintenance
+
+Corrective maintenance may be define with those alteration which is done for the solving those errors which was available in the software. With the help of corrective maintenance method software can change by removing all the faults. 
+
+Adaptive Maintenance - Adaptive maintenance may be defined by that alteration in software system to survive in that area where this system operates.
+
+Perfective maintenance - To increase the efficiency, performance, maintainability, effectiveness of software that is called perfective maintenance .Most of the times enhancement also includes perfective maintenance as one of its part. After changes user operate this software for the purpose which it was developed by developer. 
+
